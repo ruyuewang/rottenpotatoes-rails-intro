@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
     @all_ratings = Movie.all_ratings
     # set the checked ratings
     if params[:ratings].nil?
-      @ratings_to_show = session[:ratings_to_show].nil? ? [] : session[:ratings_to_show]
+      @ratings_to_show = session[:ratings_to_show].nil? ? @all_ratings : session[:ratings_to_show]
     else
       @ratings_to_show = params[:ratings].keys
     end
