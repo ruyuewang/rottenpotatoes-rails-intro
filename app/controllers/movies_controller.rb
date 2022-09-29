@@ -8,9 +8,19 @@ class MoviesController < ApplicationController
 
   def index
     @all_ratings = Movie.all_ratings
-    @ratings_to_show = params[:ratings].nil? ? []: params[:ratings].keys
-    @sort = params[:sort]
+    # set the checked ratings
+    if params[:ratings].nil?
+      @ratings_to_show = session[:ratings_to_show].nil? ? [] : session[:ratings_to_show]
+    else
+      @ratings_to_show = params[:ratings].keys
+    end
+    # set th filter 
+    @sort = params[:sort].nil? ? session[:sort] : params[:sort]
+
+    # set the movies and sessions
     @movies = Movie.with_ratings(@ratings_to_show).order(params[:sort])
+    session[:ratings_to_show] = @ratings_to_show
+    session[:sort] = @sort
   end
 
   def new

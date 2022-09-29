@@ -18,13 +18,13 @@
   <thead>
     <tr>
       <th class="<%= 'bg-warning hilite' if @sort == 'title'%>">
-        <a href="<%= movies_path({"ratings": params[:ratings], "sort": "title"}) %>", id="title_header">
+        <a href="<%= movies_path({"ratings": params[:ratings], "sort": "title"}) %>" id="title_header">
           Movie Title
         </>
       </th>
       <th>Rating</th>
       <th class="<%= 'bg-warning hilite' if @sort == 'release_date'%>">
-        <a href="<%= movies_path({"ratings": params[:ratings], "sort": "release_date"}) %>", id="release_date_header">
+        <a href="<%= movies_path({"ratings": params[:ratings], "sort": "release_date"}) %>" id="release_date_header">
           Release Date
         </>
       </th>
