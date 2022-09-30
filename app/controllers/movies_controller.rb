@@ -23,7 +23,7 @@ class MoviesController < ApplicationController
     session[:sort] = @sort
 
     if !(params[:sort].present? && params[:ratings_to_show].present?)
-      redirect_to movies_path
+      redirect_to movies_path(sort: session[:sort], ratings_to_show: session[:ratings_to_show])
       return
     end
   end
