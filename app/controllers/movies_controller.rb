@@ -21,6 +21,10 @@ class MoviesController < ApplicationController
     @movies = Movie.with_ratings(@ratings_to_show).order(params[:sort])
     session[:ratings_to_show] = @ratings_to_show
     session[:sort] = @sort
+
+    if !(params[:sort].present? && params[:ratings_to_show].present?)
+      redirect_to movies_path(sort: session[:sort], ratings_to_show: session[:ratings_to_show])
+    end
   end
 
   def new
